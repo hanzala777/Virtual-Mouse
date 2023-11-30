@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+      *{
+        font-family: 'Poppins', sans-serif;
+      }
       body {
         padding: 0;
         margin: 0;
@@ -12,22 +16,36 @@
       }
       .main-contianer {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         padding: 0;
         margin: 0;
+        overflow:none;
       }
+      
       .sidebar {
         display: flex;
-        width: 20%;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-        background-color: #579bb1;
+        width: 100%;
+        height: 11vh;
+        position:sticky;
+        top:0;
+        background-color: #aa96da;
       }
+      .logo{
+        width:50%;
+      }
+      .logo img{
+        height:10vh;
+        width:10vh;
+        margin:1%;
+        box-shadow:none !important;
+      }
+      
       .sidebar ul {
+        padding:0;
+        padding-left:10px;
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: row;
+        column-gap: 50px;
         list-style: none;
       }
       .sidebar ul li a {
@@ -36,28 +54,87 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        height: 60px;
-        width: 100px;
-        background-color: #e1d7c6;
+        height: 2vw;
+        width: 5vw;
+        box-shadow: 2px 3px 4px gray;/*rgb(193, 189, 189);*/
+        /*background-color: #e1d7c6;*/
+        background-color:white;
         border-radius: 0.5rem;
+        font-size:90%;
+        padding:6px;
+      }
+      .sidebar ul li a:hover{
+        background-color:aquamarine;
+      }
+      .sidebar ul li a:active{
+        backgrund-color:aqua;
+        padding:4px;
+        transition:0.5s;
       }
       .container {
-        width: 80%;
-        height: 100vh;
-        background-color: #e1d7c6;
+        width: 100%;
+        height: 87vh;
+        background-color:  #FFFFD2;
         overflow-y: scroll;
       }
+      .btn {
+        color: black;
+        font-weight: bold;
+        width: 100px;
+        height: 40px;
+        align-self: center;
+        border-radius: 0.5rem;
+        border: none;
+        box-shadow: 2px 3px 4px rgb(193, 189, 189);
+        background-color: #ece8dd;
+        font-size: large;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        transition: 0.2s;
+      }
+      .btn:active {
+        background-color: aqua;
+      }
       .section {
-        padding: 10px;
+        padding: 30px;
       }
       .card {
         display: flex;
         flex-direction: row;
         gap: 20px;
       }
+      .card p{
+        background-color:rgb(255,255,255,0.3);
+        border-radius:0.5rem;
+        padding:5px;
+      }
       img {
         border-radius: 0.5rem;
         box-shadow: 1px 2px 3px 0.5px rgb(0, 0, 0);
+      }
+      #home{
+        background:#C5FAD5;
+      }
+      #about{
+        background:black;
+        color:#C5FAD5;
+        height:85vh;
+      }
+      .team{
+        display:flex;
+        flex-direction:row;
+        gap:10px;
+      }
+      .member{
+        border:1px solid;
+        margin:10px;
+        padding:5px;
+        border-radius:0.5rem;
+        width:250px;
+        display:flex;
+        text-align:center;
+        flex-direction:column;
       }
     </style>
   </head>
@@ -65,6 +142,9 @@
     <div class="main-contianer">
       <!-- ***************Sidebar contet************** -->
       <div class="sidebar">
+        <div class='logo'>
+          <img src="{{ url_for('static', filename='mouse.png') }}"/>
+        </div>
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#guide">Guide</a></li>
@@ -77,13 +157,13 @@
       <div class="container">
         <!-- ===============section of home starts========== -->
         <div class="section home" id="home">
-          <h2>Virtual Mouse</h2>
+          <h1>Virtual Mouse</h1>
           <form method="POST" action="/run_python">
             <button class="btn" type="submit">Start</button>
           </form>
 
           <h2>
-            This Project is about doing work of mouse using hand gestures.
+            This Project is about, implementing work of mouse using hand gestures.
           </h2>
         </div>
         <!-- ===============section of home end========== -->
@@ -91,16 +171,16 @@
         <!-- ===============section of guide starts========== -->
         <div class="section guide" id="guide">
           <h1>Guide</h1>
-          <h2 class="instr">Virtual Mouse Project</h2>
+          <h3 class="instr"><u> Virtual Mouse Project</u></h3>
           <p class="instr">
             Using Hand Gesture you ca operate mouse operation like <br />
             1.LeftClick <br />2.RightClick <br />
             3.Drag&Drop <br />
             4.ScrollUp & ScrollDown <br />
           </p>
-          <h3>After Clicking Start Button Your Camera Will Open</h3>
+          <h4>After Clicking Start Button Your Camera Will Open</h4>
 
-          <h2>Manual Guide</h2>
+          <h3><u>Manual Guide </u></h3>
           <h4>Gesture 1</h4>
           <div class="card">
             <img
@@ -110,10 +190,12 @@
               width="150"
             />
             <p>
-              using The above hand gesture, You can move cursor of the computer
+              Using This hand gesture, You can move cursor of the computer
               screen
               <br />
               If you move hand then relatively the cursor wil move
+              <br>
+              Note that if keep index finger closer to middle finger then curser will not move or stop at that poistion.
             </p>
           </div>
 
@@ -127,7 +209,7 @@
             />
             <div class="img"></div>
             <p>
-              Using Above Gesture You can right click on the screen respective
+              Using This Gesture You can right click on the screen respective
               of cursor position
             </p>
           </div>
@@ -141,7 +223,7 @@
               width="150"
             />
             <p>
-              Using Above Gesture You can left click on the screen respective of
+              Using This Gesture You can left click on the screen respective of
               cursor position
             </p>
           </div>
@@ -155,7 +237,7 @@
               width="150"
             />
             <p>
-              Using above gesture into the camera you can scroll up the screen
+              Using This gesture into the camera you can scroll up the screen
             </p>
           </div>
 
@@ -167,7 +249,7 @@
               width="150"
             />
             <p>
-              Using above gesture into the camera you can scroll down the screen
+              Using  gesture into the camera you can scroll down the screen
             </p>
           </div>
 
@@ -179,7 +261,7 @@
               width="150"
             />
             <p>
-              Using above gesture when cursor is on any item then you can drag
+              Using  gesture when cursor is on any item then you can drag
               that item and move hand respective of screen and if you to drop
               the item just apply gesture 1
             </p>
@@ -194,9 +276,24 @@
 
         <!-- ===============section of about starts========== -->
         <div class="section about" id="about">
-          <h1>About</h1>
+          <h1>About Us</h1>
+           <h5>Project Partners: </h5>
+           <div class='team' >
+              <div class='member member1'>
+                <img src="{{ url_for('static', filename='gm.jpg') }}"/>
+                <h3> Gulam Mujtaba Quadri </h3>
+                <h4>TY-CSE IIIrd Year</h4>
+              </div>
+              <div class='member member2'>
+                <img src="{{ url_for('static', filename='hanz.jpg') }}"/>
+                <h3> Hanzala Ahmed </h3>
+                <h4>TY-CSE IIIrd Year</h4>
+              </div>
+
+           </div>
+
         </div>
-        <!-- ===============section of about end========== -->
+        <!-- ===============section of about end========== -->        
       </div>
       <!-- ******************container ends************************* -->
     </div>
