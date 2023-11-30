@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+      }
+      .main-contianer {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+      }
+      .sidebar {
+        display: flex;
+        width: 20%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: #579bb1;
+      }
+      .sidebar ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        list-style: none;
+      }
+      .sidebar ul li a {
+        display: flex;
+        text-decoration: none;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 60px;
+        width: 100px;
+        background-color: #e1d7c6;
+        border-radius: 0.5rem;
+      }
+      .container {
+        width: 80%;
+        height: 100vh;
+        background-color: #e1d7c6;
+        overflow-y: scroll;
+      }
+      .section {
+        padding: 10px;
+      }
+      .card {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+      img {
+        border-radius: 0.5rem;
+        box-shadow: 1px 2px 3px 0.5px rgb(0, 0, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-contianer">
+      <!-- ***************Sidebar contet************** -->
+      <div class="sidebar">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#guide">Guide</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <!-- *************************sidebar End******************* -->
+
+      <!-- ********************container start******************** -->
+      <div class="container">
+        <!-- ===============section of home starts========== -->
+        <div class="section home" id="home">
+          <h2>Virtual Mouse</h2>
+          <form method="POST" action="/run_python">
+            <button class="btn" type="submit">Start</button>
+          </form>
+
+          <h2>
+            This Project is about doing work of mouse using hand gestures.
+          </h2>
+        </div>
+        <!-- ===============section of home end========== -->
+
+        <!-- ===============section of guide starts========== -->
+        <div class="section guide" id="guide">
+          <h1>Guide</h1>
+          <h2 class="instr">Virtual Mouse Project</h2>
+          <p class="instr">
+            Using Hand Gesture you ca operate mouse operation like <br />
+            1.LeftClick <br />2.RightClick <br />
+            3.Drag&Drop <br />
+            4.ScrollUp & ScrollDown <br />
+          </p>
+          <h3>After Clicking Start Button Your Camera Will Open</h3>
+
+          <h2>Manual Guide</h2>
+          <h4>Gesture 1</h4>
+          <div class="card">
+            <img
+              src="{{ url_for('static', filename='g6.jpeg') }}"
+              alt=""
+              srcset=""
+              width="150"
+            />
+            <p>
+              using The above hand gesture, You can move cursor of the computer
+              screen
+              <br />
+              If you move hand then relatively the cursor wil move
+            </p>
+          </div>
+
+          <h4>Gesture 2</h4>
+          <div class="card">
+            <img
+              src="{{ url_for('static', filename='g4.jpeg') }}"
+              alt=""
+              srcset=""
+              width="150"
+            />
+            <div class="img"></div>
+            <p>
+              Using Above Gesture You can right click on the screen respective
+              of cursor position
+            </p>
+          </div>
+
+          <h4>Gesture 3</h4>
+          <div class="card">
+            <img
+              src="{{ url_for('static', filename='g5.jpeg') }}"
+              alt=""
+              srcset=""
+              width="150"
+            />
+            <p>
+              Using Above Gesture You can left click on the screen respective of
+              cursor position
+            </p>
+          </div>
+
+          <h4>Gesture 4</h4>
+          <div class="card">
+            <img
+              src="{{ url_for('static', filename='g2.jpeg') }}"
+              alt=""
+              srcset=""
+              width="150"
+            />
+            <p>
+              Using above gesture into the camera you can scroll up the screen
+            </p>
+          </div>
+
+          <h4>Gesture 5</h4>
+          <div class="card">
+            <img
+              src="{{ url_for('static', filename='g1.jpeg') }}"
+              alt=""
+              width="150"
+            />
+            <p>
+              Using above gesture into the camera you can scroll down the screen
+            </p>
+          </div>
+
+          <h4>Gesture 6</h4>
+          <div class="card">
+            <img
+              src="{{ url_for('static', filename='g3.jpeg') }}"
+              alt=""
+              width="150"
+            />
+            <p>
+              Using above gesture when cursor is on any item then you can drag
+              that item and move hand respective of screen and if you to drop
+              the item just apply gesture 1
+            </p>
+          </div>
+
+          <h4>
+            Note:To turn off the program click on the camera frame then press
+            'Q'
+          </h4>
+        </div>
+        <!-- ===============section of guide End========== -->
+
+        <!-- ===============section of about starts========== -->
+        <div class="section about" id="about">
+          <h1>About</h1>
+        </div>
+        <!-- ===============section of about end========== -->
+      </div>
+      <!-- ******************container ends************************* -->
+    </div>
+  </body>
+</html>
