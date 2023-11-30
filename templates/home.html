@@ -14,7 +14,7 @@
         margin: 0;
         height: 100vh;
       }
-      .main-contianer {
+      .main-container {
         display: flex;
         flex-direction: column;
         padding: 0;
@@ -67,7 +67,7 @@
         background-color:aquamarine;
       }
       .sidebar ul li a:active{
-        backgrund-color:aqua;
+        background-color:aqua;
         padding:4px;
         transition:0.5s;
       }
@@ -139,8 +139,8 @@
     </style>
   </head>
   <body>
-    <div class="main-contianer">
-      <!-- ***************Sidebar contet************** -->
+    <div class="main-container">
+      <!-- ***************Sidebar content************** -->
       <div class="sidebar">
         <div class='logo'>
           <img src="{{ url_for('static', filename='mouse.png') }}"/>
@@ -173,7 +173,7 @@
           <h1>Guide</h1>
           <h3 class="instr"><u> Virtual Mouse Project</u></h3>
           <p class="instr">
-            Using Hand Gesture you ca operate mouse operation like <br />
+            Using Hand Gesture you can operate mouse operation like <br />
             1.LeftClick <br />2.RightClick <br />
             3.Drag&Drop <br />
             4.ScrollUp & ScrollDown <br />
@@ -195,7 +195,7 @@
               <br />
               If you move hand then relatively the cursor wil move
               <br>
-              Note that if keep index finger closer to middle finger then curser will not move or stop at that poistion.
+              Note that if keep index finger closer to middle finger then curser will not move or stop at that position.
             </p>
           </div>
 
@@ -209,7 +209,7 @@
             />
             <div class="img"></div>
             <p>
-              Using This Gesture You can right click on the screen respective
+              Using This Gesture You can right-click on the screen respective
               of cursor position
             </p>
           </div>
@@ -223,7 +223,7 @@
               width="150"
             />
             <p>
-              Using This Gesture You can left click on the screen respective of
+              Using This Gesture You can left-click on the screen respective of
               cursor position
             </p>
           </div>
@@ -271,6 +271,9 @@
             Note:To turn off the program click on the camera frame then press
             'Q'
           </h4>
+          <form method="POST" action="/run_python">
+            <button class="btn" type="submit">Start</button>
+          </form>
         </div>
         <!-- ===============section of guide End========== -->
 

@@ -60,7 +60,7 @@ while True:
                         print('left click: ', abs(middle_x - index_x))
                         pyautogui.leftClick()
                         time.sleep(1)
-                    if abs(middle_x - index_x) > 115:
+                    if abs(middle_x - index_x) > 75:
                         dif_x = middle_x - last_x
                         dif_y = middle_y - last_y
                         off_set_x = middle_x + dif_x

@@ -13,8 +13,8 @@ def index():
 def run_python():
     # Execute your Python script (hello.py) using subprocess
     subprocess.run(['python', 'final.py'])
-    return 'Python script executed successfully.'
+    return render_template('home.html')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0')
