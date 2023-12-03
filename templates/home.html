@@ -21,7 +21,7 @@
         margin: 0;
         overflow:none;
       }
-      
+
       .sidebar {
         display: flex;
         width: 100%;
@@ -39,7 +39,7 @@
         margin:1%;
         box-shadow:none !important;
       }
-      
+
       .sidebar ul {
         padding:0;
         padding-left:10px;
@@ -158,9 +158,10 @@
         <!-- ===============section of home starts========== -->
         <div class="section home" id="home">
           <h1>Virtual Mouse</h1>
-          <form method="POST" action="/run_python">
-            <button class="btn" type="submit">Start</button>
-          </form>
+<!--          <form method="POST" action="/run_python">-->
+<!--            <button class="btn" type="submit">Start</button>-->
+<!--          </form>-->
+            <button class='btn' id="startStopButton" onclick="toggleExecution()">Start</button>
 
           <h2>
             This Project is about, implementing work of mouse using hand gestures.
@@ -172,15 +173,15 @@
         <div class="section guide" id="guide">
           <h1>Guide</h1>
           <h3 class="instr"><u> Virtual Mouse Project</u></h3>
-          <p class="instr">
-            Using Hand Gesture you can operate mouse operation like <br />
-            1.LeftClick <br />2.RightClick <br />
-            3.Drag&Drop <br />
-            4.ScrollUp & ScrollDown <br />
-          </p>
-          <h4>After Clicking Start Button Your Camera Will Open</h4>
+<!--          <p class="instr">-->
+<!--            Using Hand Gesture you can operate mouse operation like <br />-->
+<!--            1.LeftClick <br />2.RightClick <br />-->
+<!--            3.Drag&Drop <br />-->
+<!--            4.ScrollUp & ScrollDown <br />-->
+<!--          </p>-->
+<!--          <h4>After Clicking Start Button Your Camera Will Open</h4>-->
 
-          <h3><u>Manual Guide </u></h3>
+<!--          <h3><u>Manual Guide </u></h3>-->
           <h4>Gesture 1</h4>
           <div class="card">
             <img
@@ -271,9 +272,10 @@
             Note:To turn off the program click on the camera frame then press
             'Q'
           </h4>
-          <form method="POST" action="/run_python">
-            <button class="btn" type="submit">Start</button>
-          </form>
+<!--          <form method="POST" action="/run_python">-->
+<!--            <button class="btn" type="submit">Start</button>-->
+<!--          </form>-->
+            <button class='btn' id="startStop" onclick="toggleExecution()">Start</button>
         </div>
         <!-- ===============section of guide End========== -->
 
@@ -296,9 +298,80 @@
            </div>
 
         </div>
-        <!-- ===============section of about end========== -->        
+        <!-- ===============section of about end========== -->
       </div>
       <!-- ******************container ends************************* -->
     </div>
+        <script>
+        function toggleExecution() {
+            var button1 = document.getElementById("startStopButton");
+            var button2 = document.getElementById("startStop");
+            var buttonText1 = button1.innerHTML;
+            var buttonText2 = button2.innerHTML;
+
+            if (buttonText1 === "Start") {
+                // Change button text to "Stop"
+                button1.innerHTML = "Stop";
+                button2.innerHTML = "Stop";
+
+                // Send a request to start execution
+                fetch('/start_execution', { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+            } else {
+                // Change button text to "Start"
+                button1.innerHTML = "Start";
+                button2.innerHTML = "Start";
+
+                // Send a request to stop execution
+                fetch('/stop_execution', { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
   </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Flask App</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<button id="startStopButton" onclick="toggleExecution()">Start</button>-->
+
+<!--<script>-->
+<!--    function toggleExecution() {-->
+<!--        var button = document.getElementById("startStopButton");-->
+<!--        var buttonText = button.innerHTML;-->
+
+<!--        if (buttonText === "Start") {-->
+<!--            // Change button text to "Stop"-->
+<!--            button.innerHTML = "Stop";-->
+
+<!--            // Send a request to start execution-->
+<!--            fetch('/start_execution', { method: 'POST' })-->
+<!--                .then(response => response.json())-->
+<!--                .then(data => console.log(data))-->
+<!--                .catch(error => console.error('Error:', error));-->
+<!--        } else {-->
+<!--            // Change button text to "Start"-->
+<!--            button.innerHTML = "Start";-->
+
+<!--            // Send a request to stop execution-->
+<!--            fetch('/stop_execution', { method: 'POST' })-->
+<!--                .then(response => response.json())-->
+<!--                .then(data => console.log(data))-->
+<!--                .catch(error => console.error('Error:', error));-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
