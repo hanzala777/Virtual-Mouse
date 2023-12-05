@@ -316,7 +316,12 @@
 
                 // Send a request to start execution
                 fetch('/start_execution', { method: 'POST' })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
                     .then(data => console.log(data))
                     .catch(error => console.error('Error:', error));
             } else {
@@ -326,7 +331,12 @@
 
                 // Send a request to stop execution
                 fetch('/stop_execution', { method: 'POST' })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
                     .then(data => console.log(data))
                     .catch(error => console.error('Error:', error));
             }
@@ -334,44 +344,3 @@
     </script>
   </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Flask App</title>-->
-<!--</head>-->
-<!--<body>-->
-
-<!--<button id="startStopButton" onclick="toggleExecution()">Start</button>-->
-
-<!--<script>-->
-<!--    function toggleExecution() {-->
-<!--        var button = document.getElementById("startStopButton");-->
-<!--        var buttonText = button.innerHTML;-->
-
-<!--        if (buttonText === "Start") {-->
-<!--            // Change button text to "Stop"-->
-<!--            button.innerHTML = "Stop";-->
-
-<!--            // Send a request to start execution-->
-<!--            fetch('/start_execution', { method: 'POST' })-->
-<!--                .then(response => response.json())-->
-<!--                .then(data => console.log(data))-->
-<!--                .catch(error => console.error('Error:', error));-->
-<!--        } else {-->
-<!--            // Change button text to "Start"-->
-<!--            button.innerHTML = "Start";-->
-
-<!--            // Send a request to stop execution-->
-<!--            fetch('/stop_execution', { method: 'POST' })-->
-<!--                .then(response => response.json())-->
-<!--                .then(data => console.log(data))-->
-<!--                .catch(error => console.error('Error:', error));-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
-
-<!--</body>-->
-<!--</html>-->
